@@ -1,0 +1,44 @@
+spring:
+  profiles:
+    active: local # 디폴트 환경
+  messages:
+    basename: i18n/exception
+    encoding: UTF-8
+#  jwt:
+#    secret: govlepel@$&
+  security:
+    oauth2:
+#      client:  #ResourceServer 구현 시 bearer token 활성화 시키기
+#        client-id: testClientId
+#        client-secret: testSecret
+#      resource:
+#        token-info-uri: http://localhost:8081/oauth/check_token
+      jwt:
+        signkey: 123@#$
+#  social:
+#    kakao:
+#      client_id: XXXXXXXXXXXXXXXXXXXXXXXXXX # 앱생성시 받은 REST API 키
+#      redirect: /social/login/kakao
+#      url:
+#        login: https://kauth.kakao.com/oauth/authorize
+#        token: https://kauth.kakao.com/oauth/token
+#        profile: https://kapi.kakao.com/v2/user/me
+
+springdoc:
+  version: '@project.version@'
+  api-docs:
+    path: /api-docs
+    groups:
+      enabled: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  swagger-ui:
+    operations-sorter: alpha
+    tags-sorter: alpha
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+    display-query-params-without-oauth2: true
+    layout: BaseLayout
+  paths-to-match:
+    - /api/v1/**
+    - /test/**
